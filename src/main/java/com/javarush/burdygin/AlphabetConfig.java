@@ -19,4 +19,15 @@ public class AlphabetConfig {
     public static AlphabetLogic getAlphabetLogic() {
         return alphabetLogic;
     }
+
+    public static int alphabetLength() {
+        int result = 0;
+        for (AlphabetObject alphabetObject : alphabetsObjects) {
+            result += alphabetObject.last - (alphabetObject.getFirst() - 1);
+            if (alphabetObject.exempts != null) {
+                result += alphabetObject.exempts.length;
+            }
+        }
+        return result;
+    }
 }

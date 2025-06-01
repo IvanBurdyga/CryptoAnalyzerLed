@@ -8,22 +8,10 @@ import java.util.List;
 
 public class AlphabetLogic {
 
-
-    private static List<AlphabetObject> alphabetsObjects;
-
-    public static int alphabetLength() {
-        int result = 0;
-        for (AlphabetObject alphabetObject : alphabetsObjects) {
-            result += alphabetObject.last - (alphabetObject.getFirst() - 1);
-            if (alphabetObject.exempts != null) {
-                result += alphabetObject.exempts.length;
-            }
-        }
-        return result;
-    }
+    private final List<AlphabetObject> alphabetsObjects;
 
     public AlphabetLogic(List<AlphabetObject> alphabetsObjects) {
-        AlphabetLogic.alphabetsObjects = alphabetsObjects;
+        this.alphabetsObjects = alphabetsObjects;
     }
 
     public boolean isMiddleAlphabet(char c) {
@@ -76,7 +64,6 @@ public class AlphabetLogic {
                 && key == -1; i--) {
             AlphabetObject alphabetObject = alphabetsObjects.get(i);
             AlphabetObject previousAlphabetObject = i != 0 ? alphabetsObjects.get(i - 1) : alphabetsObjects.getLast();
-
             if (c == alphabetObject.last) {
                 c = alphabetObject.penultimate;
                 isSwitched = true;

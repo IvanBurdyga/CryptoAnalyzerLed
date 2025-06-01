@@ -1,6 +1,6 @@
 package com.javarush.burdygin.view;
 
-import com.javarush.burdygin.alphabet.AlphabetLogic;
+import com.javarush.burdygin.AlphabetConfig;
 import com.javarush.burdygin.constant.Constants;
 
 import java.util.Map;
@@ -82,7 +82,7 @@ public class Menu {
             args.put(Constants.MODE_FLAG, Constants.MODE_BRUTE_FORCE);
         } else if (args.get(Constants.KEY).isEmpty()) {
             Random random = new Random();
-            String randomKey = String.valueOf(random.nextInt(1, AlphabetLogic.alphabetLength()));
+            String randomKey = String.valueOf(random.nextInt(1, AlphabetConfig.alphabetLength()));
             args.put(Constants.KEY, randomKey);
             System.out.printf("key = %s", randomKey + '\n');
         }

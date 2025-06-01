@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class Activity {
 
-    AlphabetLogic alphabetLogic;
+    private final AlphabetLogic alphabetLogic;
 
     public Activity(AlphabetLogic alphabetLogic) {
         this.alphabetLogic = alphabetLogic;
