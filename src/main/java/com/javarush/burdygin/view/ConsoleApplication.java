@@ -12,9 +12,9 @@ import java.util.Map;
 
 public class ConsoleApplication {
 
-    Menu menu;
-    Controller controller;
-    Map<String, String> args = new HashMap<>();
+    private final Menu menu;
+    private final Controller controller;
+    private final Map<String, String> args = new HashMap<>();
 
     public ConsoleApplication(Menu menu, Controller controller) {
         this.menu = menu;
@@ -33,7 +33,6 @@ public class ConsoleApplication {
                 isExit = true;
             }
         }
-
         if (!isExit) {
             try {
                 controller.start(args);
@@ -48,11 +47,9 @@ public class ConsoleApplication {
                 System.out.println(Messages.UNKNOWN_ERROR_MESSAGE);
             }
         }
-
         if (args.get(Constants.MODE_FLAG).equals(Constants.MODE_BRUTE_FORCE)) {
             System.out.printf('\n' + "key = %s", Math.abs(Integer.parseInt(args.get(Constants.KEY))));
         }
-
         System.out.print('\n' + Messages.COMPLETE_MESSAGE);
     }
 

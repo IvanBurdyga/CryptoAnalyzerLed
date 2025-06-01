@@ -9,12 +9,12 @@ import java.util.List;
 public class AlphabetLogic {
 
 
-    static List<AlphabetObject> alphabetsObjects;
+    private static List<AlphabetObject> alphabetsObjects;
 
     public static int alphabetLength() {
         int result = 0;
         for (AlphabetObject alphabetObject : alphabetsObjects) {
-            result += alphabetObject.last - (alphabetObject.first - 1);
+            result += alphabetObject.last - (alphabetObject.getFirst() - 1);
             if (alphabetObject.exempts != null) {
                 result += alphabetObject.exempts.length;
             }
@@ -29,7 +29,7 @@ public class AlphabetLogic {
     public boolean isMiddleAlphabet(char c) {
         boolean result = false;
         for (AlphabetObject alphabetsObject : alphabetsObjects) {
-            if (c > alphabetsObject.first && c < alphabetsObject.last) {
+            if (c > alphabetsObject.getFirst() && c < alphabetsObject.last) {
                 result = true;
                 break;
             }
@@ -45,19 +45,19 @@ public class AlphabetLogic {
             AlphabetObject alphabetObject = alphabetsObjects.get(i);
             AlphabetObject nextAlphabetObject = i != alphabetsObjects.size() - 1 ? alphabetsObjects.get(i + 1) : alphabetsObjects.getFirst();
 
-            if (c == alphabetObject.first) {
-                c = alphabetObject.second;
+            if (c == alphabetObject.getFirst()) {
+                c = alphabetObject.getSecond();
                 isSwitched = true;
             } else if (c == alphabetObject.last) {
                 if (alphabetObject.exempts != null) {
                     c = alphabetObject.exempts[0];
                 } else {
-                    c = nextAlphabetObject.first;
+                    c = nextAlphabetObject.getFirst();
                 }
                 isSwitched = true;
             } else if (alphabetObject.exempts != null) {
                 if (c == alphabetObject.exempts[alphabetObject.exempts.length - 1]) {
-                    c = nextAlphabetObject.first;
+                    c = nextAlphabetObject.getFirst();
                     isSwitched = true;
                 } else {
                     for (int j = 0; j < alphabetObject.exempts.length - 1 && !isSwitched; j++) {
@@ -80,7 +80,7 @@ public class AlphabetLogic {
             if (c == alphabetObject.last) {
                 c = alphabetObject.penultimate;
                 isSwitched = true;
-            } else if (c == alphabetObject.first) {
+            } else if (c == alphabetObject.getFirst()) {
                 if (previousAlphabetObject.exempts != null) {
                     c = previousAlphabetObject.exempts[previousAlphabetObject.exempts.length - 1];
                 } else {
@@ -126,7 +126,7 @@ public class AlphabetLogic {
     private int[] checkMostUsageSymbolFromAlphabet(AlphabetObject alphabetsObject, int symbolCounter, Path sourceFilePath) {
         int middleCounter;
         int middleChar = 0;
-        for (int i = alphabetsObject.first; i <= alphabetsObject.last; i++) {
+        for (int i = alphabetsObject.getFirst(); i <= alphabetsObject.last; i++) {
             middleCounter = checkingTheTextForCharCount(sourceFilePath, (char) i);
             int[] intermediateCharResult = charCalculator(middleCounter, symbolCounter, middleChar, i);
             middleChar = intermediateCharResult[0];

@@ -11,10 +11,9 @@ public class ConsoleRunner {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in).useDelimiter("\n");
-        AlphabetConfig alphabetConfig = new AlphabetConfig();
-        Activity activity = new Activity(alphabetConfig.getAlphabetLogic());
-        Menu menu = new Menu(scanner, alphabetConfig.getAlphabetLogic());
-        Controller controller = new Controller(activity, alphabetConfig.getAlphabetLogic());
+        Activity activity = new Activity(AlphabetConfig.getAlphabetLogic());
+        Menu menu = new Menu(scanner);
+        Controller controller = new Controller(activity);
         ConsoleApplication consoleApplication = new ConsoleApplication(menu, controller);
         consoleApplication.run();
     }

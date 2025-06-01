@@ -1,6 +1,5 @@
 package com.javarush.burdygin.view;
 
-
 import com.javarush.burdygin.alphabet.AlphabetLogic;
 import com.javarush.burdygin.constant.Constants;
 
@@ -10,9 +9,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-
     private final Scanner scanner;
-    AlphabetLogic alphabetLogic;
 
     /**
      * mode flag
@@ -22,9 +19,8 @@ public class Menu {
      * 3 Brute Force
      */
 
-    public Menu(Scanner scanner, AlphabetLogic alphabetLogic) {
+    public Menu(Scanner scanner) {
         this.scanner = scanner;
-        this.alphabetLogic = alphabetLogic;
     }
 
     //main method of class Menu
@@ -65,7 +61,7 @@ public class Menu {
     }
 
     //write message and line under
-    private static void writeMessage(String message) {
+    private void writeMessage(String message) {
         System.out.printf(message + '\n');
         System.out.println("-".repeat(15));
     }
